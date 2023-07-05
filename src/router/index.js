@@ -16,7 +16,28 @@ const router = createRouter({
       path: '/settings',
       name: 'settings',
       component: () => import('../views/SettingsView.vue')
+    },
+    {
+      path: '/messages',
+      name: 'messages',
+      component: () => import('../views/MessageView.vue')
+    },
+    {
+      path: '/bookmarks',
+      name: 'bookmarks',
+      component: () => import('../views/BookmarksView.vue')
+    },
+    {
+      path: '/authorize/:provider',
+      name: 'authorize',
+      component: () => import('../views/AuthorizeView.vue')
+    },
+    {
+      path: '/:uniqueName',
+      name: 'profile',
+      component: () => import('../views/ProfileView.vue')
     }
+
   ]
 })
 

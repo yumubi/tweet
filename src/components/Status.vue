@@ -1,24 +1,22 @@
 <script setup>
 import IconComment from "@/components/icons/IconComment.vue";
 import IconLike from "@/components/icons/IconLike.vue";
+defineProps(['status'])
 </script>
 <template>
   <div class="avatararea">
     <a class="avatar">
-      <img src="https://cdn.staticaly.com/gh/yumubi/picx-images-hosting@master/covers/20230527-105019.5sm29sz7gw40.jpg" alt="avatar">
+      <img :src="status.user.picture" alt="avatar">
     </a>
   </div>
   <div class="content">
     <div class="author">
-      <a href="">Fabrizio Romano</a>
-      <span>@FabrizioRomano</span>
-      - 12小时
+      <a href="'/' + status.user.uniqueName">{{status.user.name}}</a>
+      <span>@{{status.user.uniqueName}}</span>
+      · 12小时
     </div>
     <div class="raw">
-      🚨 Kylian Mbappé has informed PSG of his decision: he’ll NOT trigger the option to extend current contract until
-      2025, it means that deal would expire next June 2024 — as L’Équipé called.<br /><br />
-      PSG position: NO plan to lose Kylian for free. <br /><br />
-      Sign new deal now or he could be sold.
+     <p v-for="c in status.content">{{c.value}}</p>
     </div>
     <div class="op">
       <a>

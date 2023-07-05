@@ -1,10 +1,11 @@
 <script setup>
 
+import Title from "@/components/Title.vue";
 </script>
 
 <template>
   <main>
-    <h2>设置</h2>
+   <Title title="设置"/>
   </main>
 </template>
 

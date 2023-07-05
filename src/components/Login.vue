@@ -7,7 +7,7 @@ import IconGoogle from "@/components/icons/IconGoogle.vue";
     <h2>初次使用，请先登录</h2>
     <div class="tips">看来你是新来的，立即登录,获取你自己的个性化时间线</div>
     <div class="btnarea">
-      <a class="loginbtn" href="https://api.lowlevelnews.com/oidc/google">
+      <a class="loginbtn" href="https://api.lowlevelnews.com/o/oidc/google">
       <IconGoogle/><span>使用Google账号登录</span>
       </a>
     </div>
@@ -21,8 +21,9 @@ import IconGoogle from "@/components/icons/IconGoogle.vue";
   .sidelogin {
     width: 300px;
     border: 1px solid rgb(239, 243, 244);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 5px 15px;
+    margin-top: 20px;
 
 }
 
