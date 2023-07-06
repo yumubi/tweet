@@ -8,6 +8,9 @@ import {onMounted, ref, watchEffect} from "vue";
   const contentRaw = ref("")
   const contentFormatted = ref([])
 
+  const loading = ref(false)
+
+
   onMounted(() => {
     let sessionStr = window.localStorage.getItem(("session"))
     if(sessionStr) {
@@ -28,9 +31,10 @@ watchEffect(() => {
 
 
 async function newStatus() {
-    if(contentRaw.value.length === 0) {
+    if(contentRaw.value.length === 0 || loading.value) {
       return
     }
+    loading.value = true;
     const div = document.createElement('div')
     div.innerHTML = contentRaw.value;
     contentFormatted.value = []
@@ -46,9 +50,13 @@ async function newStatus() {
     })
   })
 
+  loading.value = false
+
+
   if(resp.status === 200) {
     document.querySelector('.post-area .content .raw').innerHTML = ''
     contentRaw.value = ''
+    emit('posted')
   } else if(resp.status === 401) {
     alert('401')
   } else {
@@ -132,7 +140,7 @@ function processNode(node) {
                @input="updateContentModel"
                placeholder="今天有什么新鲜事儿?"></div>
           <div class="operate">
-            <button :class="activeClass" @click="newStatus()">推送</button>
+            <button :class="activeClass" @click="newStatus()">{{loading?"..." : "推送"}}</button>
           </div>
         </div>
 

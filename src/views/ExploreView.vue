@@ -3,6 +3,8 @@
 import Status from "@/components/Status.vue";
 import {markRaw, onMounted, ref} from "vue";
 import Post from "@/components/Post.vue";
+import Title from "@/components/Title.vue";
+import Loadding from "@/components/Loadding.vue";
 
 const session = ref(null)
 const status = ref(null)
@@ -12,9 +14,20 @@ onMounted(async () => {
   if(sessionStr) {
     session.value = JSON.parse(sessionStr)
   }
-  let resp = await fetch('https://api.lowlevelnews.com/o/explore')
-  status.value = JSON.parse(sessionStr)
+  loadExploreData()
 })
+
+async function loadExploreData() {
+  let resp = await fetch('https://api.lowlevelnews.com/o/explore')
+  console.log("headers=" + JSON.stringify(resp.headers))
+  if(resp.headers.get("X-Session-Valid") === "false") {
+    console.log("session is null!")
+    session.value = null
+  }
+
+  status.value = await resp.json()
+}
+
 
 
 
@@ -22,13 +35,14 @@ onMounted(async () => {
 
 <template>
   <main>
-    <h2>探索</h2>
-    <Post v-if="session"/>
-    <ul>
+    <Title :title="session ? '主页' : '探索'"/>
+    <Post v-if="session" @posted="loadExploreData"/>
+    <ul v-if="status">
       <li v-for="s in status">
         <Status :status="s"></Status>
       </li>
     </ul>
+    <loadding v-if="!status"/>
   </main>
 </template>
 
@@ -53,7 +67,7 @@ onMounted(async () => {
     main ul li {
       display: flex;
       padding: 10px 20px;
-      transition: .5s;
+      transition: .5s, display 0.5s;
       border-bottom: 1px solid rgb(239, 243, 244);
     }
 
