@@ -1,11 +1,19 @@
 <script setup>
 import {onMounted, ref} from "vue";
+import Loadding from "@/components/Loadding.vue";
 
+
+  const emit = defineEmits(['posted'])
   const labels = ref();
-
   onMounted(async () => {
-    labels.value = await ((await fetch('https://api.lowlevelnews.com/o/labels')).json())
+    let resp = await fetch('https://api.lowlevelnews.com/o/labels')
 
+    if(resp.headers.get("X-Session-Valid") === "false") {
+      let head = resp.headers.get("X-Session-Valid");
+      console.log('head=' + head)
+      emit("sessionExpired")
+    }
+    labels.value = await resp.json()
   })
 </script>
 
@@ -17,11 +25,10 @@ import {onMounted, ref} from "vue";
 
         <div class="label">#{{ label.value}}</div>
         <div class="count">{{label.count}}</div>
-
-
       </li>
     </ul>
   </div>
+  <Loadding v-if="!labels"></Loadding>
 </template>
 
 <style scoped>

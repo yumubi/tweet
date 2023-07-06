@@ -11,6 +11,7 @@
       method: "post",
     })
     let sessionObj = await resp.json()
+    console.log('authorize-sessionObj=' + JSON.stringify(sessionObj))
     if(sessionObj.apiKey) {
       window.localStorage.setItem('session', JSON.stringify(sessionObj))
       resp.headers.forEach((value, name) => {
@@ -32,5 +33,28 @@
 </template>
 
 <style scoped>
+    main {
+      border-right: 1px solid rgb(239, 243, 244);
+      border-left: 1px solid rgb(239, 243, 244);
+    }
+
+    main ul li {
+      display: flex;
+      padding: 10px 20px;
+      transition: .5s;
+      border-bottom: 1px solid rgb(239, 243, 244);
+    }
+
+    main ul li:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+    }
+
+    .tips {
+      padding: 2rem;
+      font-size: 18px;
+      color: #666;
+    }
+
 
 </style>

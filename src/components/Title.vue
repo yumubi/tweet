@@ -1,4 +1,6 @@
 <script setup>
+  import AuthorizeView from "@/App.vue";
+
   defineProps({
     title: {
       type: String,

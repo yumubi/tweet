@@ -1,12 +1,17 @@
 <script setup>
 
 import Title from "@/components/Title.vue";
+import AuthorizeView from "@/App.vue";
+import Loadding from "@/components/Loadding.vue";
 </script>
 
 <template>
+
   <main>
     <Title title="书签"/>
+    <Loadding/>
   </main>
+
 </template>
 
 <style scoped>
