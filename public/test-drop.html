@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drag and Drop Example</title>
+  <style>
+    .dropzone {
+      width: 200px;
+      height: 200px;
+      border: 2px dashed gray;
+      text-align: center;
+      line-height: 200px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="dropzone"
+     ondragenter="handleDragEnter(event)"
+     ondragover="event.preventDefault()"
+     ondrop="event.preventDefault()">
+  Drag and drop here!
+</div>
+
+<script>
+  function handleDragEnter(e) {
+    console.log('handleDragEnter.e=' + e.dataTransfer.types);
+    console.log(e.dataTransfer.getData('text/plain'));
+  }
+</script>
+</body>
+</html>

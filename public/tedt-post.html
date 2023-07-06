@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-area {
+      display: flex;
+      padding: 10px 20px;
+      border-bottom: .5px solid tomato;
+    }
+
+    .avatar-area {
+      color: #39c5bb;
+      flex: 0 0 3.1rem;
+    }
+
+    .avatar,
+    .avatar img {
+      width: 40px;
+      height: 40px;
+    }
+    .content {
+      color: #24b4fb;
+    }
+
+    .content .raw {
+      color: salmon;
+      width: 100%;
+      min-height: 4rem;
+      padding: .5rem;
+      outline: none;
+      border: none;
+    }
+
+    .content .operate {
+      color: indigo;
+      display: flex;
+      justify-content: end;
+    }
+
+    .content .operate button{
+      background-color: chartreuse;
+      display: inline-block;
+      border: none;
+      background-color: #cccccc;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 0.5rem 1.1rem 0.5rem 1.3rem;
+      border-radius: 22px;
+      color: #fff;
+      letter-spacing: 0.2rem;
+
+    }
+
+  </style>
+</head>
+<body>
+    <div class="post-area">
+      <div class="avatar-area">
+        <a class="avatar"><img src="favicon.ico"></a>
+      </div>
+      <div class="content">
+        <div class="raw"></div>
+        <div class="operate">
+          <button><span>btn</span></button>
+        </div>
+      </div>
+
+    </div>
+</body>
+</html>

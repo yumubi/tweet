@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Node Example</title>
+  <style>
+    .post-area {
+      margin: 5px;
+      border: 10px solid #ccc;
+      padding: 10px;
+      box-sizing: content-box;
+    }
+
+    button {
+      border: 2px solid #39c5bb;
+      background-color: #24b4fb;
+      border-radius: 0.9em;
+      padding: 0.8em 1.2em 0.8em 1em;
+      transition: all ease-in-out 0.2s;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0071e2;
+    }
+  </style>
+</head>
+<body>
+<div class="post-area">
+  <div class="content">
+    <div class="raw" contenteditable="true">
+      This is the editable area. Select some text and click the button.
+    </div>
+  </div>
+</div>
+<button onclick="addSpanNode()">Add Span Node</button>
+
+<script>
+  function addNode(node) {
+    const editable = document.querySelector('.post-area .content .raw');
+    const selection = window.getSelection();
+
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(node);
+    } else {
+      editable.appendChild(node);
+    }
+  }
+
+  function addSpanNode() {
+    const spanNode = document.createElement('span');
+    spanNode.textContent = 'New Span';
+
+    addNode(spanNode);
+  }
+</script>
+</body>
+</html>
