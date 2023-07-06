@@ -3,11 +3,23 @@ import {onMounted, ref} from "vue";
 import Loadding from "@/components/Loadding.vue";
 
 
-  const emit = defineEmits(['posted'])
+  const emit = defineEmits(['sessionExpired'])
   const labels = ref();
+  const session = ref();
   onMounted(async () => {
-    let resp = await fetch('https://api.lowlevelnews.com/o/labels')
+    let sessionStr = window.localStorage.getItem("session")
+    if(sessionStr) {
+      session.value = JSON.parse(sessionStr)
+    }
 
+    let opts = {}
+    if(session.value) {
+      opts.headers = {
+        "Authorization": session.value.apiKey,
+      }
+    }
+
+    let resp = await fetch('https://api.lowlevelnews.com/o/labels', opts)
     if(resp.headers.get("X-Session-Valid") === "false") {
       let head = resp.headers.get("X-Session-Valid");
       console.log('head=' + head)

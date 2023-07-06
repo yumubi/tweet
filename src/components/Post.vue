@@ -140,7 +140,15 @@ function processNode(node) {
                @input="updateContentModel"
                placeholder="今天有什么新鲜事儿?"></div>
           <div class="operate">
-            <button :class="activeClass" @click="newStatus()">{{loading?"..." : "推送"}}</button>
+            <div class="func">
+              <a title="媒体(不可用状态) ">
+                <IconMedia/>
+              </a>
+            </div>
+            <button :class="activeClass"
+                    @click="newStatus()">
+              {{loading?"..." : "推送"}}
+            </button>
           </div>
         </div>
 
@@ -185,10 +193,12 @@ function processNode(node) {
 
   .content .operate {
     display: flex;
-    justify-content: end;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
   .content .operate button {
+    user-select: none;
     display: inline-block;
     border: none;
     background-color: hsla(160, 100%, 37%, .7);

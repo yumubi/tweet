@@ -1,19 +1,19 @@
 <script setup>
 import IconComment from "@/components/icons/IconComment.vue";
 import IconLike from "@/components/icons/IconLike.vue";
+import moment from "moment/moment.js";
 defineProps(['status'])
 </script>
 <template>
   <div class="avatararea">
-    <a class="avatar">
-      <img :src="status.user.picture" alt="avatar">
-    </a>
+    <a :href="'/' + status.user.uniqueName" class="avatar">
+      <img :src="status.user.picture" alt="avatar"/></a>
   </div>
   <div class="content">
     <div class="author">
       <a href="'/' + status.user.uniqueName">{{status.user.name}}</a>
       <span>@{{status.user.uniqueName}}</span>
-      · 12小时
+      · {{moment.duration(moment().diff(moment(status.createTime))).humanize()}}
     </div>
     <div class="raw">
      <p v-for="c in status.content">{{c.value}}</p>
