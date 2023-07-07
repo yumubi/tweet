@@ -1,6 +1,8 @@
 <script setup>
 import {onMounted, ref, watchEffect} from "vue";
+import IconMedia from "@/components/icons/IconMedia.vue";
 
+  const emit = defineEmits(['posted'])
   const sessionUniqueName = ref("")
   const sessionPicture = ref("")
   const activeClass = ref("")
@@ -193,9 +195,32 @@ function processNode(node) {
 
   .content .operate {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
   }
+
+
+
+
+
+  .content .operate .func {
+    display: flex;
+    justify-content: center;
+    height: 36px;
+    align-items: center;
+    margin-left: -10px;
+  }
+
+  .content .operate .func a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
 
   .content .operate button {
     user-select: none;

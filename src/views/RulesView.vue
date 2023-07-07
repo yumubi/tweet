@@ -5,12 +5,11 @@ import Title from "@/components/Title.vue";
 
 <template>
   <main>
-   <Title title="设置"/>
+    <Title title="服务条款"/>
   </main>
 </template>
 
 <style scoped>
-
   main {
     border-left: 1px solid rgb(239, 243, 244);
     border-right: 1px solid rgb(239, 243, 244);

@@ -2,21 +2,27 @@
 import IconComment from "@/components/icons/IconComment.vue";
 import IconLike from "@/components/icons/IconLike.vue";
 import moment from "moment/moment.js";
-defineProps(['status'])
+
+
+
+const props = defineProps(['status']);
+
+
+
 </script>
 <template>
   <div class="avatararea">
-    <a :href="'/' + status.user.uniqueName" class="avatar">
-      <img :src="status.user.picture" alt="avatar"/></a>
+    <a :href="'/' + props.status.user.uniqueName" class="avatar">
+      <img :src="props.status.user.picture" alt="avatar"/></a>
   </div>
   <div class="content">
     <div class="author">
-      <a href="'/' + status.user.uniqueName">{{status.user.name}}</a>
-      <span>@{{status.user.uniqueName}}</span>
-      · {{moment.duration(moment().diff(moment(status.createTime))).humanize()}}
+      <a :href="'/' + props.status.user.uniqueName">{{props.status.user.name}}</a>
+      <span>@{{props.status.user.uniqueName}}</span>
+      · {{moment.duration(moment().diff(moment(props.status.createTime))).humanize()}}
     </div>
     <div class="raw">
-     <p v-for="c in status.content">{{c.value}}</p>
+     <p v-for="c in props.status.content">{{c}}</p>
     </div>
     <div class="op">
       <a>

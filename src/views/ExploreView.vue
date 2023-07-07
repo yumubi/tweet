@@ -14,17 +14,22 @@ onMounted(async () => {
   if(sessionStr) {
     session.value = JSON.parse(sessionStr)
   }
-  loadExploreData()
+  await loadExploreData()
 })
 
 async function loadExploreData() {
-  let resp = await fetch('https://api.lowlevelnews.com/o/explore')
+  let opts = {}
+  if(session.value) {
+    opts.headers = {
+      "Authorization": session.value.apiKey,
+    }
+  }
+  let resp = await fetch('https://api.lowlevelnews.com/o/explore', opts)
   console.log("headers=" + JSON.stringify(resp.headers))
   if(resp.headers.get("X-Session-Valid") === "false") {
     console.log("session is null!")
     session.value = null
   }
-
   status.value = await resp.json()
 }
 
@@ -38,7 +43,7 @@ async function loadExploreData() {
     <Title :title="session ? '主页' : '探索'"/>
     <Post v-if="session" @posted="loadExploreData"/>
     <ul v-if="status">
-      <li v-for="s in status">
+      <li v-for="s in status.v">
         <Status :status="s"></Status>
       </li>
     </ul>

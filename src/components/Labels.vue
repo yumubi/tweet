@@ -22,7 +22,6 @@ import Loadding from "@/components/Loadding.vue";
     let resp = await fetch('https://api.lowlevelnews.com/o/labels', opts)
     if(resp.headers.get("X-Session-Valid") === "false") {
       let head = resp.headers.get("X-Session-Valid");
-      console.log('head=' + head)
       emit("sessionExpired")
     }
     labels.value = await resp.json()

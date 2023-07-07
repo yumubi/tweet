@@ -12,7 +12,7 @@ import IconGoogle from "@/components/icons/IconGoogle.vue";
       </a>
     </div>
     <div class="tips">
-      登录即表示同意 <RouterLink to="/rules">服务条款</RouterLink>及 <RouterLink href="/privacypolicy">隐私政策</RouterLink>
+      登录即表示同意 <RouterLink to="/rules">服务条款</RouterLink>及 <RouterLink to="/privacypolicy">隐私政策</RouterLink>
     </div>
   </div>
 </template>
