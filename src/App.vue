@@ -16,7 +16,8 @@ const session = ref(null)
 onMounted(() => {
   console.log("开始执行!")
   if(window.localStorage.getItem("session") === null )
-    window.localStorage.setItem("session",'{"apiKey":"sk-3EGweQRcmcF32Cx9V9SQVTsb4kivBAc191G7BHH","id":"2uABUyySJBVxgz3zW","name":"Stellar Nolan","uniqueName":"鱿鱼须","picture":"https://lh3.googleusercontent.com/a/AAcHTtcvj9TWrsYBu9aam0Wwiho1AEj3g5jo--GmVyQ_5pnhoQ=s96-c","locale":"en","bio":"test","verifiedCode":0,"admin":false}')
+    window.localStorage.setItem("session",
+        '{"apiKey":"sk-Ggp2fnys1qPKj4dKsFXinkLPnHYdXqPSG5Udd5","id":"2uABUyySJBVxgz3zW","name":"Stellar Nolan","uniqueName":"鱿鱼须","picture":"https://lh3.googleusercontent.com/a/AAcHTtcvj9TWrsYBu9aam0Wwiho1AEj3g5jo--GmVyQ_5pnhoQ=s96-c","locale":"en","bio":"test","verifiedCode":0,"admin":false,"bg":"/20230707/2uABUyySJBVxgz3zW/2uAjwrE1eBmEoAge6"}')
   console.log("执行完毕!")
   let sessionStr = window.localStorage.getItem("session")
 
@@ -62,9 +63,8 @@ function logout() {
 
         <li>
           <RouterLink to="/settings">
-            <IconSettings>
-              <span>设置</span>
-            </IconSettings>
+            <IconSettings/>
+            <span>设置</span>
           </RouterLink>
         </li>
       </ul>

@@ -2,6 +2,7 @@
   import {useRoute} from "vue-router";
   import {onMounted, ref} from "vue";
   import Title from "@/components/Title.vue";
+  import Loadding from "@/components/Loadding.vue";
 
   const route = useRoute()
   let message = ref("")
@@ -29,6 +30,7 @@
   <main>
     <Title title="认证"></Title>
     <div v-if="message" class="tips">{{message}}</div>
+    <Loadding v-if="!message"/>
   </main>
 </template>
 

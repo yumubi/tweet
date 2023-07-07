@@ -9,7 +9,6 @@ import Loadding from "@/components/Loadding.vue";
 
   <main>
     <Title title="书签"/>
-    <Loadding/>
   </main>
 
 </template>
